@@ -9,7 +9,7 @@ phases:
     commands:
       - echo Build started on `date`
       - aws s3 cp s3://envoy-cwp2rsc-demo/cds.yaml cds.yaml
-      - aws s3 cp s3://envoy-cwp2rsc-demo/lds.yam lds.yaml
+      - aws s3 cp s3://envoy-cwp2rsc-demo/lds.yaml lds.yaml
       - echo Building the Docker image...
       - docker build -t envoy .
       - docker tag envoy:latest 040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-cwp2rsc-demo-ecr:latest    
