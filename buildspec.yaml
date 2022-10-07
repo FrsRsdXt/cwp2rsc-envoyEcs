@@ -17,7 +17,7 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push 040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-manual:latest
+      - docker push 040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-cwp2rsc-demo-ecr:latest
       - echo Writing image definitions file...
       - printf '[{"name":"envoy-cwp2rsc-demo-container","imageUri":"040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-cwp2rsc-demo-ecr:latest"}]' $REPOSITORY_URI:latest > imagedefinitions.json
 artifacts:
