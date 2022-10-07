@@ -8,11 +8,7 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-<<<<<<< HEAD
       - aws s3 cp s3://envoy-cwp2rsc-demo/cds.yaml cds.yaml
-=======
-      - aws s3 cp s3://envoy-cwp2rsc-demo/cds.yam cds.yaml
->>>>>>> 568d28914f04182da68aec7579af42ce0fff88ed
       - aws s3 cp s3://envoy-cwp2rsc-demo/lds.yam lds.yaml
       - echo Building the Docker image...
       - docker build -t envoy .
