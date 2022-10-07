@@ -4,22 +4,22 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 040256855012.dkr.ecr.ap-southeast-1.amazonaws.com
-      - REPOSITORY_URI=040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-manual
+      - REPOSITORY_URI=040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-cwp2rsc-demo-ecr
   build:
     commands:
       - echo Build started on `date`
-      - aws s3 cp s3://cwp2-envoyrsc-configs/cds.yaml cds.yaml
-      - aws s3 cp s3://cwp2-envoyrsc-configs/lds.yaml lds.yaml
+      - aws s3 cp s3://envoy-cwp2rsc-demo/cds.yam cds.yaml
+      - aws s3 cp s3://envoy-cwp2rsc-demo/lds.yam lds.yaml
       - echo Building the Docker image...
       - docker build -t envoy .
-      - docker tag envoy:latest 040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-manual:latest    
+      - docker tag envoy:latest 040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-cwp2rsc-demo-ecr:latest    
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
       - docker push 040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-manual:latest
       - echo Writing image definitions file...
-      - printf '[{"name":"envoy-manual","imageUri":"040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-manual:latest"}]' $REPOSITORY_URI:latest > imagedefinitions.json
+      - printf '[{"name":"envoy-cwp2rsc-demo-container","imageUri":"040256855012.dkr.ecr.ap-southeast-1.amazonaws.com/envoy-cwp2rsc-demo-ecr:latest"}]' $REPOSITORY_URI:latest > imagedefinitions.json
 artifacts:
   files:
     - '**/*'
