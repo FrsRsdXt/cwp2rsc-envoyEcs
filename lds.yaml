@@ -39,6 +39,8 @@ resources:
                         rules:
                           - requested_server_name:
                               contains: "google.com"
+                          - requested_server_name:
+                              contains: "amazon.com"
                   principals:
                     - any: true
     - name: envoy.tcp_proxy
