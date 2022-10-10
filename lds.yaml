@@ -90,9 +90,9 @@ resources:
                   permissions:
                     - or_rules:
                         rules:
-                          - header:
-                              name: ":authority"
-                              contains_match: "example.com"
+                          # - header:
+                          #     name: ":authority"
+                          #     contains_match: "example.com"
                           - header:
                               name: ":authority"
                               contains_match: "neverssl.com"
